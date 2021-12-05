@@ -1,0 +1,79 @@
+﻿@model PSSCMS.Session
+
+<!-- Modal -->
+<div class="modal fade" id="c-cld-cModal" tabindex="-1" aria-labelledby="g-dch-fnModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="g-dch-fnModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form id="c-cld-cm">
+                    @Html.HiddenFor(m => m.SessionStatusID, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.Name, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.LastName, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.Mail, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.PhoneNumber, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.SessionDate, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.IP, new { @id ="sessionStatusID" })
+                    @Html.HiddenFor(m => m.ID, new { @id ="sessionStatusID" })
+
+                    @Html.TextBoxFor(m => m.Name, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                    @Html.TextBoxFor(m => m.LastName, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                    @Html.TextBoxFor(m => m.Mail, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                    @Html.TextBoxFor(m => m.SessionDate, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                    @Html.TextBoxFor(m => m.IP, new {@class = "form-control", @disabled = "disabled"})
+                    <br/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="CloseModal()">Cancel</button>
+                <button type="button" class="btn btn-success" onclick="SaveFstNameChanges(2)">Approve</button>
+                <button type="button" class="btn btn-warning" onclick="SaveFstNameChanges(4)">Decline</button>
+                <button type="button" class="btn btn-danger" onclick="SaveFstNameChanges(3)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function CloseModal() {
+        $('#c-cld-cModal').modal('hide');
+    }
+
+    function SaveFstNameChanges(opt) {
+        if (opt == 2) {
+            $('#sessionStatusID').val(2);
+        } else if (opt == 4) {
+            $('#sessionStatusID').val(4);
+        } else {
+            $('#sessionStatusID').val(3);
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/EditCalendarEvent_PostModal")',
+            data: $("#c-cld-cm").serialize(),
+            success: function (jsRes) {
+                $("#modalsHere").html(jsRes);
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+</script>
+
+@if (ViewBag.Status == "PASSED")
+{
+    <script type="text/javascript">
+        $("#c-cld-cModal").modal('hide');
+        ReloadThePage();
+    </script>
+}

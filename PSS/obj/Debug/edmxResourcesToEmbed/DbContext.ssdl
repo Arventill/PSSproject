@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PssModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClientsNewsletter">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomePage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PageTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PageSubTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ButtonText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdditionalTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdditionalSubtitle" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomeProjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjSubtitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjImgPath" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PageOwner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Twitter" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Facebook" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Github" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'pss.dbo.PortfolioPage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PortfolioPage">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="PageTitle" />
+      <PropertyRef Name="PageSubtitle" />
+      <PropertyRef Name="ButtonText" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PageTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PageSubtitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ButtonText" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PortfolioPhotos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IfActual" Type="bit" Nullable="false" />
+    <Property Name="ImgPath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ImgDescription" Type="nvarchar" MaxLength="37" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="varchar(max)" Nullable="false" />
+    <Property Name="SessionDate" Type="datetime" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IP" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SessionTypeID" Type="int" Nullable="false" />
+    <Property Name="SessionStatusID" Type="int" Nullable="false" />
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Texts">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Fill" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Login" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PssModelStoreContainer">
+    <EntitySet Name="ClientsNewsletter" EntityType="Self.ClientsNewsletter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeProjects" EntityType="Self.HomeProjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PageOwner" EntityType="Self.PageOwner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortfolioPhotos" EntityType="Self.PortfolioPhotos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Texts" EntityType="Self.Texts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PortfolioPage" EntityType="Self.PortfolioPage" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PortfolioPage].[ID] AS [ID], 
+    [PortfolioPage].[PageTitle] AS [PageTitle], 
+    [PortfolioPage].[PageSubtitle] AS [PageSubtitle], 
+    [PortfolioPage].[ButtonText] AS [ButtonText]
+    FROM [dbo].[PortfolioPage] AS [PortfolioPage]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,246 @@
+﻿@model PSS.Models.BookingModel
+
+@{
+    int iSum = 0;
+    var dateNow = DateTime.Now;
+    var firstDateNow = new DateTime(dateNow.Year, dateNow.Month, 1);
+    var firstDayWeekEnum = firstDateNow.DayOfWeek;
+    int firstDayWeek = (int)firstDayWeekEnum;
+
+    if (firstDayWeek == 0)
+    {
+        firstDayWeek = 7;
+    }
+
+    int daysInAddition = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - 28;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Core theme Addons/css (includes Bootstrap)-->
+    <link href="../../Content/Site.css" rel="stylesheet" />
+    <script language="JavaScript" type="text/javascript" src="/Scripts/jquery-3.6.0.js"></script>
+</head>
+<body style="background-image: url(https://static.pexels.com/photos/1526/dark-blur-blurred-gradient.jpg);" onload="startTime()" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">Filip Nowicki</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Main page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Portfolio")">Full portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#page-top">Book a day</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        $(function () {
+            $('.date-picker').datepicker({
+                format: 'yyyy-mm-dd',
+                weekStart: 1
+            });
+        });
+    </script>
+    <div class="myCalendar">
+        <div class="container">
+            <div class="card">
+                <div class="front">
+                    <div class="contentfront">
+                        <div class="month">
+                            <table>
+                                <tr class="orangeTr">
+                                    <th>M</th>
+                                    <th>T</th>
+                                    <th>W</th>
+                                    <th>T</th>
+                                    <th>F</th>
+                                    <th>S</th>
+                                    <th>S</th>
+                                </tr>
+                                @for (int i = 1, k = 0; i <= 5; i++)
+                                {
+                                    <tr class="whiteTr">
+                                        @for (int j = 0; j <= 6; j++)
+                                        {
+                                            if (j + k < firstDayWeek || j + k > 28 + daysInAddition)
+                                            {
+                                                <th></th>
+                                            }
+                                            else
+                                            {
+                                                iSum = j + k;
+                                                <th id="dayBooking" data-day="@iSum" data-month="@dateNow.Month">@iSum</th>
+                                            }
+                                        }
+                                    </tr>
+
+                                    k += 7;
+                                }
+                            </table>
+                        </div>
+                        <div class="date">
+                            <div class="datecont">
+                                <div id="date"></div>
+                                <div id="day"></div>
+                                <div id="month"></div>
+                                <i class="fa fa-pencil edit" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="back">
+                    <div class="contentback">
+                        <div class="backcontainer" style="background-color: #1F3936">
+                            <h3 style="text-align: center;color: aliceblue;">Book a session</h3>
+                            <form id="f-cld-form">
+                                <div class="col-12">
+
+                                    <!-- Input field -->
+                                    <div class="row" style="margin-bottom: 3px;">
+                                        <div class="col-6" style="padding-right: 2px;">
+                                            @Html.TextBoxFor(m => m.FName, new { @class = "form-control", @style = "font-size: 0.7rem;", @placeholder = "First Name", @id = "exampleInputFirstName" })
+                                        </div>
+                                        <div class="col-6" style="padding-left: 1px;">
+                                            @Html.TextBoxFor(m => m.LName, new { @class = "form-control", @style = "font-size: 0.7rem;", @placeholder = "Last Name", @id = "exampleInputLastName" })
+                                        </div>
+                                    </div>
+                                    <!-- Input field -->
+                                    <div class="row" style="margin-bottom: 3px;">
+                                        <div class="col">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "font-size: 0.7rem;", @placeholder = "E-mail", @id = "exampleInputMail" })
+                                        </div>
+                                    </div>
+                                    <!-- Input field -->
+                                    <div class="row" style="margin-bottom: 3px;">
+                                        <div class="col">
+                                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @style = "font-size: 0.7rem;", @placeholder = "Phone number", @id = "exampleInputPhone" })
+                                        </div>
+                                    </div>
+                                    <!-- Input field -->
+                                    <div class="row" style="margin-bottom: 3px;">
+                                        <div class="col">
+                                            @Html.TextBoxFor(model => model.DateTime, new { @Value = Model.DateTime.ToString("yyyy-MM-dd"), @style = "font-size: 0.7rem;", @class = "form-control date-picker", @placeholder = "Date" })
+                                        </div>
+                                    </div>
+                                    <!-- Input field -->
+                                    <div class="row" style="margin-bottom: 3px;">
+                                        <div class="col">
+                                            @Html.TextBoxFor(m => m.SessionType, new { @class = "form-control", @style = "font-size: 0.7rem;", @placeholder = "What session type do you need: wedding, street, etc.", @id = "exampleInputSesh" })
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="justify-content: flex-end;">
+                                        <button id="btn-cld-cancel" type="button" class="btn" style="margin-right: 3px; max-width: 80px;background-color: crimson;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;float: right;font-size: 13px;">Cancel</button>
+                                        <button id="btn-cld-save" type="button" class="btn" style="max-width: 80px;background-color: lightseagreen;padding-left: 5px;padding-right: 5px;padding-top: 2px;padding-bottom: 2px;float: right;font-size: 13px;">Submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let cardElement = document.querySelector(".card");
+        let dayElement = document.querySelector("#dayBooking");
+
+        cardElement.addEventListener("click", flip);
+
+        function flip() {
+            var hasClass = cardElement.classList.contains("flipped");
+            if (hasClass) {
+                //
+            } else {
+                cardElement.classList.toggle("flipped");
+            }
+        }
+
+        function startTime() {
+            var weekday = new Array();
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            var month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var d = today.getDate();
+            var y = today.getFullYear();
+            var wd = weekday[today.getDay()];
+            var mt = month[today.getMonth()];
+
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('date').innerHTML =
+                d;
+            document.getElementById('day').innerHTML =
+                wd;
+            document.getElementById('month').innerHTML =
+                mt + "/" + y;
+
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $(".back").off('click', '#btn-cld-cancel');
+            $(".back").on("click",
+                "#btn-cld-cancel",
+                function () {
+                    location.reload();
+                }
+            );
+
+            $(".back").off('click', '#btn-cld-save');
+            $(".back").on("click", "#btn-cld-save", function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Content("~/Booking/HandleBooking_Post")',
+                    data: $('#f-cld-form').serialize(),
+                    success: function (jsRes) {
+                        alert("Sukces!");
+                        location.reload().delay(2000);
+                    }
+                }).fail(
+                    function(jsResF) {
+                        alert("Błąd!");
+                    });
+            });
+        });
+    </script>
+</body>

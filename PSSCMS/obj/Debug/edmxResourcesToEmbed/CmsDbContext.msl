@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CmsPssModelStoreContainer" CdmEntityContainer="CmsPssEntities">
+    <EntitySetMapping Name="ClientsNewsletters">
+      <EntityTypeMapping TypeName="CmsPssModel.ClientsNewsletter">
+        <MappingFragment StoreEntitySet="ClientsNewsletter">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomePages">
+      <EntityTypeMapping TypeName="CmsPssModel.HomePage">
+        <MappingFragment StoreEntitySet="HomePage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="PageSubTitle" ColumnName="PageSubTitle" />
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+          <ScalarProperty Name="AdditionalTitle" ColumnName="AdditionalTitle" />
+          <ScalarProperty Name="AdditionalSubtitle" ColumnName="AdditionalSubtitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeProjects">
+      <EntityTypeMapping TypeName="CmsPssModel.HomeProject">
+        <MappingFragment StoreEntitySet="HomeProjects">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjTitle" ColumnName="ProjTitle" />
+          <ScalarProperty Name="ProjSubtitle" ColumnName="ProjSubtitle" />
+          <ScalarProperty Name="ProjImgPath" ColumnName="ProjImgPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageOwners">
+      <EntityTypeMapping TypeName="CmsPssModel.PageOwner">
+        <MappingFragment StoreEntitySet="PageOwner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Github" ColumnName="Github" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="CmsPssModel.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="SessionStatusID" ColumnName="SessionStatusID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="SessionDate" ColumnName="SessionDate" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SessionTypeID" ColumnName="SessionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Texts">
+      <EntityTypeMapping TypeName="CmsPssModel.Text">
+        <MappingFragment StoreEntitySet="Texts">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Fill" ColumnName="Fill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="CmsPssModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PortfolioPages">
+      <EntityTypeMapping TypeName="CmsPssModel.PortfolioPage">
+        <MappingFragment StoreEntitySet="PortfolioPage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="PageSubtitle" ColumnName="PageSubtitle" />
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PortfolioPhotos">
+      <EntityTypeMapping TypeName="CmsPssModel.PortfolioPhoto">
+        <MappingFragment StoreEntitySet="PortfolioPhotos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IfActual" ColumnName="IfActual" />
+          <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+          <ScalarProperty Name="ImgDescription" ColumnName="ImgDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,54 @@
+﻿@model PSSCMS.Models.HomeModel
+
+<!-- Modal -->
+<div class="modal fade" id="h-home-bbModal" tabindex="-1" aria-labelledby="g-dch-fnModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="g-dch-fnModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form id="h-home-bb">
+                    <label>Title</label>
+                    @Html.TextBoxFor(m => m.AdditionalTitle, new { @class = "form-control" })
+                    <br />
+                    <label>Subtitle</label>
+                    @Html.TextBoxFor(m => m.AdditionalSubtitle, new { @class = "form-control" })
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal" onclick="CloseModal()">Close</button>
+                <button type="button" class="btn btn-success" onclick="SaveHomeBotChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function CloseModal() {
+        $('#h-home-bbModal').modal('hide');
+    }
+
+    function SaveHomeBotChanges() {
+        debugger;
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/HomeBotEdit_PostModal")',
+            data: $("#h-home-bb").serialize(),
+            success: function (jsRes) {
+                $("#modalsHere").html(jsRes);
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+</script>
+
+@if (ViewBag.Status == "PASSED")
+{
+    <script type="text/javascript">
+        $("#h-home-bbModal").modal('hide');
+        ReloadThePage();
+    </script>
+}

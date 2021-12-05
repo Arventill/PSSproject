@@ -1,0 +1,318 @@
+﻿@model PSSCMS.Models.Cms.CalendarModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Calendar</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <!-- Approved -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Approved</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.ApprovedSessionModel == null || Model.ApprovedSessionModel.Count <= 0)
+                    {
+                        <table style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div><p style="text-align: center; color: green">You've got no incoming sessions of this type.</p></div>
+                    }
+                    else
+                    {
+                        <table style="width: 100%; border-collapse: separate; border-spacing: 0 5px;">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var approved in Model.ApprovedSessionModel)
+                                {
+                                    <tr>
+                                        <td>@approved.FirstName</td>
+                                        <td>@approved.LastName</td>
+                                        <td>@approved.Mail</td>
+                                        <td>@approved.SessionDate</td>
+                                        <td>@approved.PhoneNumber</td>
+                                        <td>@approved.SessionTypeID</td>
+                                        <td><button class="btn btn-info btn-sm" onclick="EditEvent(@approved.ID)">Edit</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <!-- Pending -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Pending</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.PendingSessionModel == null || Model.PendingSessionModel.Count <= 0)
+                    {
+                        <table style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div><p style="text-align: center; color: green">You've got no incoming sessions of this type.</p></div>
+                    }
+                    else
+                    {
+                        <table style="width: 100%; border-collapse: separate; border-spacing: 0 5px;">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var pending in Model.PendingSessionModel)
+                                {
+                                    <tr>
+                                        <td>@pending.FirstName</td>
+                                        <td>@pending.LastName</td>
+                                        <td>@pending.Mail</td>
+                                        <td>@pending.SessionDate</td>
+                                        <td>@pending.PhoneNumber</td>
+                                        <td>@pending.SessionTypeID</td>
+                                        <td><button class="btn btn-info btn-sm" onclick="EditEvent(@pending.ID)">Edit</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <!-- Canceled -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Canceled</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.CanceledSessionModel == null || Model.CanceledSessionModel.Count <= 0)
+                    {
+                        <table style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div><p style="text-align: center; color: green">You've got no incoming sessions of this type.</p></div>
+                    }
+                    else
+                    {
+                        <table style="width: 100%; border-collapse: separate; border-spacing: 0 5px;">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var canceled in Model.CanceledSessionModel)
+                                {
+                                    <tr>
+                                        <td>@canceled.FirstName</td>
+                                        <td>@canceled.LastName</td>
+                                        <td>@canceled.Mail</td>
+                                        <td>@canceled.SessionDate</td>
+                                        <td>@canceled.PhoneNumber</td>
+                                        <td>@canceled.SessionTypeID</td>
+                                        <td><button class="btn btn-info btn-sm" onclick="EditEvent(@canceled.ID)">Edit</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <!-- Other -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Other</h6>
+                </div>
+                <div class="card-body">
+                    @if (Model.OtherSessionModel == null || Model.OtherSessionModel.Count <= 0)
+                    {
+                        <table style="width: 100%">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+                        <div><p style="text-align: center; color: green">You've got no incoming sessions of this type.</p></div>
+                    }
+                    else
+                    {
+                        <table style="width: 100%; border-collapse: separate; border-spacing: 0 5px;">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Mail</th>
+                                    <th>Session Date</th>
+                                    <th>Phone</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var other in Model.OtherSessionModel)
+                                {
+                                    <tr>
+                                        <td>@other.FirstName</td>
+                                        <td>@other.LastName</td>
+                                        <td>@other.Mail</td>
+                                        <td>@other.SessionDate</td>
+                                        <td>@other.PhoneNumber</td>
+                                        <td>@other.SessionTypeID</td>
+                                        <td><button class="btn btn-info btn-sm" onclick="EditEvent(@other.ID)">Edit</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+<script type="text/javascript">
+    function ReloadThePage() {
+        location.reload();
+    }
+
+    function EditEvent(someID) {
+        var someData = { seshID: "" + someID + ""}
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/EditCalendarEvent_ShowModal")',
+            data: someData,
+            success: function (jsRes) {
+                $("#modalsHere").html(jsRes);
+                $("#c-cld-cModal").modal('show');
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+</script>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PssModelStoreContainer" CdmEntityContainer="PssEntities">
+    <EntitySetMapping Name="ClientsNewsletters">
+      <EntityTypeMapping TypeName="PssModel.ClientsNewsletter">
+        <MappingFragment StoreEntitySet="ClientsNewsletter">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="PssModel.Session">
+        <MappingFragment StoreEntitySet="Sessions">
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="SessionStatusID" ColumnName="SessionStatusID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="SessionDate" ColumnName="SessionDate" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SessionTypeID" ColumnName="SessionTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Texts">
+      <EntityTypeMapping TypeName="PssModel.Text">
+        <MappingFragment StoreEntitySet="Texts">
+          <ScalarProperty Name="Fill" ColumnName="Fill" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PssModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomePages">
+      <EntityTypeMapping TypeName="PssModel.HomePage">
+        <MappingFragment StoreEntitySet="HomePage">
+          <ScalarProperty Name="AdditionalSubtitle" ColumnName="AdditionalSubtitle" />
+          <ScalarProperty Name="AdditionalTitle" ColumnName="AdditionalTitle" />
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+          <ScalarProperty Name="PageSubTitle" ColumnName="PageSubTitle" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeProjects">
+      <EntityTypeMapping TypeName="PssModel.HomeProject">
+        <MappingFragment StoreEntitySet="HomeProjects">
+          <ScalarProperty Name="ProjImgPath" ColumnName="ProjImgPath" />
+          <ScalarProperty Name="ProjSubtitle" ColumnName="ProjSubtitle" />
+          <ScalarProperty Name="ProjTitle" ColumnName="ProjTitle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PageOwners">
+      <EntityTypeMapping TypeName="PssModel.PageOwner">
+        <MappingFragment StoreEntitySet="PageOwner">
+          <ScalarProperty Name="Github" ColumnName="Github" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PortfolioPages">
+      <EntityTypeMapping TypeName="PssModel.PortfolioPage">
+        <MappingFragment StoreEntitySet="PortfolioPage">
+          <ScalarProperty Name="ButtonText" ColumnName="ButtonText" />
+          <ScalarProperty Name="PageSubtitle" ColumnName="PageSubtitle" />
+          <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PortfolioPhotos">
+      <EntityTypeMapping TypeName="PssModel.PortfolioPhoto">
+        <MappingFragment StoreEntitySet="PortfolioPhotos">
+          <ScalarProperty Name="ImgDescription" ColumnName="ImgDescription" />
+          <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+          <ScalarProperty Name="IfActual" ColumnName="IfActual" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,55 @@
+﻿@model PSSCMS.Models.Cms.PageOwnerInfo
+
+<!-- Modal -->
+<div class="modal fade" id="g-dch-fbModal" tabindex="-1" aria-labelledby="g-dch-fbModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="g-dch-fbModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form id="g-dch-fb">
+                    <p>New facebook link</p>
+                    @Html.TextBoxFor(m => m.SocialMedia.Facebook, new { @class = "form-control", @id = "volVal" })
+                    <br />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="CloseModal()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveFstNameChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function CloseModal() {
+        $('#g-dch-fbModal').modal('hide');
+    }
+
+    function SaveFstNameChanges() {
+        var someData = { nVal: "" + $('#volVal').val() + ""}
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/ChangeFb_PostModal")',
+            data: someData,
+            success: function (jsRes) {
+                $('.modal-backdrop').remove();
+                $("#modalsHere").html(jsRes);
+                $("#g-dch-fbModal").modal('hide');
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+</script>
+
+@if (ViewBag.Status == "PASSED")
+{
+    <script type="text/javascript">
+        $("#g-dch-fbModal").modal('hide');
+        ReloadThePage();
+    </script>
+}

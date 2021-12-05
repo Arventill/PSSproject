@@ -1,0 +1,204 @@
+﻿@model PSSCMS.Models.Cms.GeneralModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">General</h1>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-xl-6 mb-4">
+            <!-- Owner -->
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Owner settings</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;"><b>Field</b></div>
+                        <div class="col-4" style="align-self: center;"><b>Value</b></div>
+                        <div class="col-4" style="float: right"><b style="float: right">Actions</b></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem; align-self: center;">
+                        <div class="col-4" style="align-self: center;">First name:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.FirstName</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_FNameChange','#g-dch-fnModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Last name:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.LastName</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_LNameChange','#g-dch-lnModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Age:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.Age</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_AgeChange','#g-dch-ageModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Address:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.Address</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_AddressChange','#g-dch-addrModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">E-mail</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.Email</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_EmailChange','#g-dch-emModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Phone:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.PhoneNumber</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_PhoneChange','#g-dch-phModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Twitter:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.SocialMedia.Twitter</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_TwitterChange','#g-dch-twtModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Facebook:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.SocialMedia.Facebook</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_FacebookChange','#g-dch-fbModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                    <hr style="margin: 0px; padding: 0px;" />
+                    <div class="row" style="padding: 1rem;">
+                        <div class="col-4" style="align-self: center;">Github:</div>
+                        <div class="col-4" style="align-self: center;">@Model.OwnerSettings.SocialMedia.Github</div>
+                        <div class="col-4" style="align-self: center;"><button type="button" style="float: right" onclick="ShowModalOwnerSettingsChange('_GeneralModal_GithubChange','#g-dch-ghModal')" class="btn btn-sm btn-danger">Change</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 mb-4">
+            <!-- Idk what -->
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Something other</h6>
+                </div>
+                <div class="card-body">
+                    <div class="col" style="padding-bottom: 10px; text-align: center; background-color: #f7f7f7 "><img class="img-fluid mb-3 mb-lg-0" style="max-height: 490px;" src="../../Content/img/construct.png" alt="..." /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col">
+
+            <!-- Color picker -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Colors</h6>
+                </div>
+                <div class="card-body">
+                    <!-- Color System -->
+                    <div class="row">
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-primary text-white shadow">
+                                <div class="card-body">
+                                    Primary
+                                    <div class="text-white-50 small">#4e73df</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-success text-white shadow">
+                                <div class="card-body">
+                                    Success
+                                    <div class="text-white-50 small">#1cc88a</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-info text-white shadow">
+                                <div class="card-body">
+                                    Info
+                                    <div class="text-white-50 small">#36b9cc</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-warning text-white shadow">
+                                <div class="card-body">
+                                    Warning
+                                    <div class="text-white-50 small">#f6c23e</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-danger text-white shadow">
+                                <div class="card-body">
+                                    Danger
+                                    <div class="text-white-50 small">#e74a3b</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-secondary text-white shadow">
+                                <div class="card-body">
+                                    Secondary
+                                    <div class="text-white-50 small">#858796</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-light text-black shadow">
+                                <div class="card-body">
+                                    Light
+                                    <div class="text-black-50 small">#f8f9fc</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-2">
+                            <div class="card bg-dark text-white shadow">
+                                <div class="card-body">
+                                    Dark
+                                    <div class="text-white-50 small">#5a5c69</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->
+
+<script type="text/javascript">
+    function ReloadThePage() {
+        location.reload();
+    }
+
+    function ShowModalOwnerSettingsChange(fieldName, modalName)
+    {
+        var someData = {place: "" + fieldName + ""}
+        $.ajax({
+            type: 'POST',
+            data: someData,
+            url: '@Url.Content("~/CmsHome/ShowModalOwnerChange")',
+            success: function (jsRes) {
+                $("#modalsHere").html(jsRes);
+                $(modalName).modal('show');
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    };
+</script>

@@ -1,0 +1,203 @@
+﻿@model PSSCMS.Models.PortfolioModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="row" style="align-items: center;">
+        <div class="col-6" style="float: left"><h1 class="h3 mb-4 text-gray-800">Portfolio</h1></div>
+        <div class="card-body col-6" style="float: right"><button style="float: right" id="addNewPhotoBtn" class="btn btn-success">Add a photo</button></div>
+
+    </div>
+
+    @if (Model.PortfolioPhotos == null || Model.PortfolioPhotos.Count == 0)
+    {
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <!-- Main page | 1st project -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">No content yet</h6>
+                    </div>
+                    <div class="card-body" style="text-align: center">
+                        <p class="mb-0">
+                            You didn't add any photos yet!
+                        </p>
+                        <br />
+                        <button id="addNewPhotoBtn" class="btn btn-success">Add 'em now!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    }
+    else
+    {
+        for (int i = 0; i < Model.PortfolioPhotos.Count; i += 3)
+        {
+            int j = i + 1, k = i + 2, l = i + 3;
+            <div class="row">
+                <div class="col-4">
+                    <!-- Portfolio | Elem: 1 -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3" style="display: flex;
+                                                             flex-wrap: nowrap;
+                                                             align-content: space-around;
+                                                             flex-direction: row;
+                                                             justify-content: space-between;
+                                                             align-items: center;">
+                            <h6 class="m-0 font-weight-bold text-primary">Portfolio | Elem: @j</h6>
+                            <button id="btn-prt-customize" data-photoid="@Model.PortfolioPhotos[i].ID" class="btn btn-sm btn-warning" style="float: right">Customize</button>
+                        </div>
+                        <div class="card-body" style="text-align: center">
+                            <h4>
+                                @Model.PortfolioPhotos[i].ImgDesc
+                            </h4>
+                            <br />
+                            <div class="col" style="padding-bottom: 10px;"><img class="img-fluid mb-3 mb-lg-0" style="max-height: 300px;" src="@Model.PortfolioPhotos[i].ImgPath" alt="..." /></div>
+                        </div>
+                    </div>
+                </div>
+                @if (i + 1 == Model.PortfolioPhotos.Count)
+                {
+                    <div class="col-4"></div>
+                    <div class="col-4"></div>
+                }
+                else if (i + 1 == Model.PortfolioPhotos.Count - 1)
+                {
+                    <div class="col-4">
+                        <!-- Portfolio | Elem: x -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3" style="display: flex;
+                                                                 flex-wrap: nowrap;
+                                                                 align-content: space-around;
+                                                                 flex-direction: row;
+                                                                 justify-content: space-between;
+                                                                 align-items: center;">
+                                <h6 class="m-0 font-weight-bold text-primary">Portfolio | Elem: @k</h6>
+                                <button id="btn-prt-customize" data-photoid="@Model.PortfolioPhotos[i + 1].ID" class="btn btn-sm btn-warning" style="float: right">Customize</button>
+                            </div>
+                            <div class="card-body" style="text-align: center">
+                                <h4>
+                                    @Model.PortfolioPhotos[i + 1].ImgDesc
+                                </h4>
+                                <br />
+                                <div class="col" style="padding-bottom: 10px;"><img class="img-fluid mb-3 mb-lg-0" style="max-height: 300px;" src="@Model.PortfolioPhotos[i + 1].ImgPath" alt="..." /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4"></div>
+                }
+                else
+                {
+                    <div class="col-4">
+                        <!-- Portfolio | Elem: x -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3" style="display: flex;
+                                                                 flex-wrap: nowrap;
+                                                                 align-content: space-around;
+                                                                 flex-direction: row;
+                                                                 justify-content: space-between;
+                                                                 align-items: center;">
+                                <h6 class="m-0 font-weight-bold text-primary">Portfolio | Elem: @k</h6>
+                                <button id="btn-prt-customize" data-photoid="@Model.PortfolioPhotos[i + 1].ID" class="btn btn-sm btn-warning" style="float: right">Customize</button>
+                            </div>
+                            <div class="card-body" style="text-align: center">
+                                <h4>
+                                    @Model.PortfolioPhotos[i + 1].ImgDesc
+                                </h4>
+                                <br />
+                                <div class="col" style="padding-bottom: 10px;"><img class="img-fluid mb-3 mb-lg-0" style="max-height: 300px;" src="@Model.PortfolioPhotos[i + 1].ImgPath" alt="..." /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <!-- Portfolio | Elem: x -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3" style="display: flex;
+                                                                 flex-wrap: nowrap;
+                                                                 align-content: space-around;
+                                                                 flex-direction: row;
+                                                                 justify-content: space-between;
+                                                                 align-items: center;">
+                                <h6 class="m-0 font-weight-bold text-primary">Portfolio | Elem: @l</h6>
+                                <button id="btn-prt-customize" data-photoid="@Model.PortfolioPhotos[i + 2].ID" class="btn btn-sm btn-warning" style="float: right">Customize</button>
+                            </div>
+                            <div class="card-body" style="text-align: center">
+                                <h4>
+                                    @Model.PortfolioPhotos[i + 2].ImgDesc
+                                </h4>
+                                <br />
+                                <div class="col" style="padding-bottom: 10px;"><img class="img-fluid mb-3 mb-lg-0" style="max-height: 300px;" src="@Model.PortfolioPhotos[i + 2].ImgPath" alt="..." /></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>
+<div id="additionalModalPlace"></div>
+<!-- /.container-fluid -->
+
+<script type="text/javascript">
+
+
+    function ReloadThePage() {
+        location.reload();
+    }
+
+    $(function () {
+        $(".card-header").off('click', '#btn-prt-customize');
+        $(".card-header").on("click",
+            "#btn-prt-customize",
+            function () {
+                //debugger;
+                var photoid = $(this).data("photoid");
+
+                var myData = {
+                    photoId: "" + photoid + ""
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Content("~/CmsHome/PortfolioCustomizePhoto_ShowModal")',
+                    data: myData,
+                    success: function (jsRes) {
+                        $("#modalsHere").html(jsRes);
+                        $("#exampleModal").modal('show');
+                    }
+                }).fail(
+                    function (jsResF) {
+                        console.log("Bład podczas dodawania produktu!");
+                    });
+            });
+
+        $(".card-body").off('click', '#addNewPhotoBtn');
+        $(".card-body").on("click",
+            "#addNewPhotoBtn",
+            function () {
+                var myData = {
+                    photoId: "" + -1 + ""
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Content("~/CmsHome/PortfolioAddPhoto_ShowModal")',
+                    data: myData,
+                    success: function (jsRes) {
+                        $("#modalsHere").html(jsRes);
+                        $("#addPhotoModal").modal('show');
+                    }
+                }).fail(
+                    function (jsResF) {
+                        console.log("Bład podczas dodawania produktu!");
+                    });
+            });
+    });
+</script>

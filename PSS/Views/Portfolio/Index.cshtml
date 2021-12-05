@@ -1,0 +1,95 @@
+﻿@model PSS.Models.PortfolioModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Grayscale - Start Bootstrap Theme</title>
+    <link rel="icon" type="image/x-icon" href="../../Content/Addons/assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Core theme Addons/css (includes Bootstrap)-->
+    <link href="../../Content/Addons/css/styles.css" rel="stylesheet" />
+</head>
+<body id="page-top" style="overflow-x: hidden;">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#page-top">@Model.PageOwnerInfo.FirstName @Model.PageOwnerInfo.LastName</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Home")">Main page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#page-top">Full portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Booking")">Book a day</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead" style="background: url('../../Content/Addons/assets/img/bg-portfolio.jpg');">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+            <div class="d-flex justify-content-center">
+                <div class="text-center">
+                    <h1 class="mx-auto my-0 text-uppercase">@Model.PageTitle</h1>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">@Model.PageSubTitle</h2>
+                    <a class="btn btn-primary" style="background-color: #6664a1; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; transition-property: color, background-color, border-color, box-shadow; transition-duration: 0.15s, 0.15s, 0.15s, 0.15s; transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out; transition-delay: 0s, 0s, 0s, 0s; " href="#about">@Model.ButtonText</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- About-->
+    <section class="about-section text-center" id="about">
+        @for (int i = 0; i < Model.PortfolioPhotos.Count; i += 3)
+        {
+            <div class="row" style="justify-content: center;">
+                <div style="width: 30%; height: 30%">
+                    <img class="img-fluid" style="height: 380px;" src="@Model.PortfolioPhotos[i].ImgPath" alt="..." />
+                    <p style="color: white;">@Model.PortfolioPhotos[i].ImgDesc</p>
+                </div>
+                @if (i+1 == Model.PortfolioPhotos.Count)
+                {
+                    <div style="width: 30%; height: 30%"></div>
+                    <div style="width: 30%; height: 30%"></div>
+                }
+                else if (i+1 == Model.PortfolioPhotos.Count - 1)
+                {
+                    <div style="width: 30%; height: 30%">
+                        <img class="img-fluid" style="height: 380px;" src="@Model.PortfolioPhotos[i + 1].ImgPath" alt="..." />
+                        <p style="color: white;">@Model.PortfolioPhotos[i + 1].ImgDesc</p>
+                    </div>
+                    <div style="width: 30%; height: 30%"></div>
+                }
+                else
+                {
+                    <div style="width: 30%; height: 30%">
+                        <img class="img-fluid" style="height: 380px;" src="@Model.PortfolioPhotos[i + 1].ImgPath" alt="..." />
+                        <p style="color: white;">@Model.PortfolioPhotos[i + 1].ImgDesc</p>
+                    </div>
+                    <div style="width: 30%; height: 30%">
+                        <img class="img-fluid" style="height: 380px;" src="@Model.PortfolioPhotos[i + 2].ImgPath" alt="..." />
+                        <p style="color: white;">@Model.PortfolioPhotos[i + 2].ImgDesc</p>
+                    </div>
+                }
+            </div>
+            <br />
+        }
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; @Model.PageOwnerInfo.FirstName @Model.PageOwnerInfo.LastName @DateTime.Now.Year</div></footer>
+    <!-- Bootstrap core Addons/js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme Addons/js-->
+    <script src="../../Content/Addons/js/scripts.js"></script>
+</body>
+</html>

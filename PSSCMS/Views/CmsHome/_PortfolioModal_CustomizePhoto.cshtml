@@ -1,0 +1,76 @@
+﻿@model PSSCMS.Models.CustomizePhotoRequest
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            </div>
+            <div class="modal-body">
+                <form id="f-prt-fm">
+                    @Html.HiddenFor(m => m.ID)
+                    @Html.HiddenFor(m => m.IfActual)
+
+                    <p>Description</p>
+                    @Html.TextBoxFor(m => m.ImgDesc, new { @class = "form-control" })
+                    <br/>
+                    <div class="row" style="place-content: center;"><button type="button" class="btn btn-warning btn-sm" onclick="ChangePhotoFromModal(@Model.ID)">Change photo</button></div>
+                </form>
+            </div>
+            <p style="color: red; align-self: center;">@Model.Errors</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="CloseModal()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="SaveCustomizedPhoto()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function CloseModal() {
+        $('#exampleModal').modal('hide');
+    }
+
+    function SaveCustomizedPhoto() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/PortfolioCustomizePhoto_PostModal")',
+            data: $('#f-prt-fm').serialize(),
+            success: function (jsRes) {
+                $('.modal-backdrop').remove();
+                $("#modalsHere").html(jsRes);
+                $("#exampleModal").modal('toggle');
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+
+    function ChangePhotoFromModal(someID) {
+        var someData = { photoID: "" + someID + ""}
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Content("~/CmsHome/PortfolioAddPhoto_ShowModal")',
+            data: someData,
+            success: function (jsRes) {
+                //$('.modal-backdrop').remove();
+                $("#additionalModalPlace").html(jsRes);
+                $("#addPhotoModal").modal('show');
+            }
+        }).fail(
+            function(jsResF) {
+                console.log("Bład!");
+            });
+    }
+</script>
+
+@if (ViewBag.Status == "PASSED")
+{
+    <script type="text/javascript">
+        $("#exampleModal").modal('hide');
+        ReloadThePage();
+    </script>
+}
